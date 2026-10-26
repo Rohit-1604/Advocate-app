@@ -1,23 +1,33 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-montserrat, "Inter", "Segoe UI", sans-serif);
-  --font-playfair: var(--font-playfair, "Playfair Display", Georgia, serif);
-}
+/* ══════════════════════════════════════════════
+   BRAND COLOURS
+   Each token becomes a Tailwind class: text-navy, bg-gold, border-gold-ink/50 …
+   Rule of thumb:
+     dark sections  → text-gold / text-gold-light
+     light sections → text-gold-ink (bright gold is too faint on white)
+     gold fills     → text-navy-dark on top, never white
+   ══════════════════════════════════════════════ */
+@theme {
+  --color-navy-deep:    #071528;
+  --color-navy-dark:    #0b1f3a;
+  --color-navy:         #14305a;
+  --color-navy-light:   #1f4275;
+  --color-gold:         #c9a24a;
+  --color-gold-light:   #e0c27a;
+  --color-gold-ink:     #8b6508;
+  --color-cream:        #f6f3ee;
+  --color-cream-dark:   #e9e3d8;
+  --color-ink:          #1c2333;
+  --color-muted:        #5b6474;
+  --color-whatsapp:     #25d366;
+  --color-whatsapp-ink: #15803d;
 
-:root {
-  --background: #faf9f7;
-  --foreground: #1a1a2e;
-  --gold: #b8860b;
-  --gold-light: #d4a843;
-  --gold-dark: #8b6508;
-  --navy: #1a237e;
-  --navy-light: #283593;
-  --navy-dark: #0d1452;
-  --cream: #f4f1ed;
-  --cream-dark: #e8e3db;
+  --color-background: #faf9f7;
+  --color-foreground: var(--color-ink);
+
+  --font-sans:  var(--font-montserrat), "Segoe UI", sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
 }
 
 /* ── Smooth Scroll ─────────────────────────── */
@@ -27,8 +37,8 @@ html {
 
 /* ── Body ──────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
@@ -38,20 +48,20 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: var(--color-cream);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
+  background: var(--color-gold);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dark);
+  background: var(--color-gold-ink);
 }
 
 /* ── Selection ─────────────────────────────── */
 ::selection {
-  background: var(--gold-light);
-  color: var(--navy-dark);
+  background: var(--color-gold-light);
+  color: var(--color-navy-dark);
 }
 
 /* ══════════════════════════════════════════════
@@ -94,8 +104,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4); }
-  50%      { box-shadow: 0 0 0 12px rgba(184, 134, 11, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 74, 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(201, 162, 74, 0); }
 }
 
 @keyframes shimmer {
@@ -185,7 +195,7 @@ body {
    ══════════════════════════════════════════════ */
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light), var(--color-gold));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -193,7 +203,7 @@ body {
 }
 
 .gradient-text-navy {
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -207,24 +217,24 @@ body {
 }
 
 .glass-dark {
-  background: rgba(26, 35, 126, 0.7);
+  background: rgba(11, 31, 58, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  background: linear-gradient(135deg, var(--color-gold-ink), var(--color-gold), var(--color-gold-light));
 }
 
 .navy-gradient-bg {
-  background: linear-gradient(135deg, var(--navy-dark), var(--navy), var(--navy-light));
+  background: linear-gradient(135deg, var(--color-navy-dark), var(--color-navy), var(--color-navy-light));
 }
 
 .section-divider {
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
   border-radius: 2px;
   animation: width-grow 0.8s ease-out;
 }
@@ -243,8 +253,8 @@ body {
 }
 .practice-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(26, 35, 126, 0.15),
-              0 8px 20px rgba(184, 134, 11, 0.1);
+  box-shadow: 0 20px 60px rgba(11, 31, 58, 0.15),
+              0 8px 20px rgba(201, 162, 74, 0.1);
 }
 .practice-card .card-image {
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -261,7 +271,7 @@ body {
 
 /* ── FAQ Accordion ─────────────────────────── */
 .faq-item {
-  border-bottom: 1px solid rgba(184, 134, 11, 0.15);
+  border-bottom: 1px solid rgba(201, 162, 74, 0.15);
   transition: background 0.3s ease;
 }
 .faq-item:hover {
@@ -283,7 +293,7 @@ body {
 }
 .testimonial-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(26, 35, 126, 0.12);
+  box-shadow: 0 12px 40px rgba(11, 31, 58, 0.12);
 }
 
 /* ── Buttons ───────────────────────────────── */
@@ -292,20 +302,20 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: white;
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
   font-weight: 600;
   border-radius: 9999px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+  box-shadow: 0 4px 15px rgba(201, 162, 74, 0.3);
   text-decoration: none;
   border: none;
   cursor: pointer;
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  background: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(184, 134, 11, 0.4);
+  box-shadow: 0 6px 25px rgba(201, 162, 74, 0.4);
 }
 
 .btn-outline {
@@ -317,14 +327,14 @@ body {
   color: white;
   font-weight: 600;
   border-radius: 9999px;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--color-gold);
   transition: all 0.3s ease;
   text-decoration: none;
   cursor: pointer;
 }
 .btn-outline:hover {
-  background: var(--gold);
-  color: var(--navy-dark);
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
   transform: translateY(-2px);
 }
 
@@ -333,25 +343,25 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+  background: linear-gradient(135deg, var(--color-navy-dark), var(--color-navy));
   color: white;
   font-weight: 600;
   border-radius: 9999px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+  box-shadow: 0 4px 15px rgba(11, 31, 58, 0.3);
   text-decoration: none;
   border: none;
   cursor: pointer;
 }
 .btn-navy:hover {
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(26, 35, 126, 0.4);
+  box-shadow: 0 6px 25px rgba(11, 31, 58, 0.4);
 }
 
 /* ── Header ────────────────────────────────── */
 .header-scrolled {
-  background: rgba(26, 26, 46, 0.95) !important;
+  background: rgba(11, 31, 58, 0.95) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -394,7 +404,7 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #25d366;
+  background: var(--color-whatsapp);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,12 +427,12 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--navy);
+  background: var(--color-navy);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+  box-shadow: 0 4px 15px rgba(11, 31, 58, 0.3);
   transition: all 0.3s ease;
   opacity: 0;
   pointer-events: none;
@@ -434,7 +444,8 @@ body {
   pointer-events: auto;
 }
 .back-to-top:hover {
-  background: var(--gold);
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
   transform: translateY(-3px);
 }
 
@@ -446,5 +457,57 @@ body {
   .section-padding {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+/* Below lg the sticky Call / WhatsApp bar replaces the floating button */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 64px;
+  }
+  .whatsapp-float {
+    display: none;
+  }
+  .back-to-top {
+    bottom: 80px;
+    right: 16px;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   ACCESSIBILITY
+   ══════════════════════════════════════════════ */
+
+/* Visible outline for keyboard users only.
+   gold-ink reads on both white and navy; header/footer get the brighter gold. */
+:focus-visible {
+  outline: 3px solid var(--color-gold-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+header :focus-visible,
+footer :focus-visible,
+.mobile-call-bar :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
   }
 }

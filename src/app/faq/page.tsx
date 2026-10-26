@@ -57,18 +57,15 @@ export default function FAQPage() {
         <div className="absolute inset-0 opacity-10">
           <Image src="/images/court.jpg" alt="" fill className="object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-dark)] to-[var(--navy)] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark to-navy opacity-90" />
         <div className="relative z-10 text-center px-6">
-          <p className="text-[var(--gold-light)] text-sm uppercase tracking-[0.3em] font-medium mb-4" style={{ animation: "fadeInDown 0.8s ease-out" }}>
+          <p className="text-gold-light text-sm uppercase tracking-[0.3em] font-medium mb-4" style={{ animation: "fadeInDown 0.8s ease-out" }}>
             Common Questions
           </p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-playfair)", animation: "hero-text 1s ease-out" }}>
             Frequently Asked <span className="gradient-text">Questions</span>
           </h1>
           <div className="section-divider mx-auto mb-4" />
-          <p className="text-white/50 text-sm">
-            <Link href="/" className="hover:text-[var(--gold)] transition-colors">Home</Link> / FAQ
-          </p>
         </div>
       </section>
 
@@ -76,8 +73,8 @@ export default function FAQPage() {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-14">
-            <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">Got Questions?</p>
-            <h2 className="text-3xl font-bold text-[var(--navy)] mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
+            <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">Got Questions?</p>
+            <h2 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
               We Have Answers
             </h2>
             <div className="section-divider mx-auto" />
@@ -90,10 +87,10 @@ export default function FAQPage() {
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   className="w-full flex items-center justify-between py-5 px-4 text-left group"
                 >
-                  <span className="text-[var(--navy)] font-semibold text-base pr-4 group-hover:text-[var(--gold)] transition-colors">
+                  <span className="text-navy font-semibold text-base pr-4 group-hover:text-gold-ink transition-colors">
                     {faq.q}
                   </span>
-                  <span className={`text-[var(--gold)] flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}>
+                  <span className={`text-gold-ink flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
@@ -111,9 +108,9 @@ export default function FAQPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--cream)]">
+      <section className="py-20 bg-cream">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-[var(--navy)] mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h2 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
             Still Have Questions?
           </h2>
           <p className="text-gray-500 mb-8">

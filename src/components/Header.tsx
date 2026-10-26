@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const navLinks = [
@@ -23,6 +23,21 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Small delay before closing so a slightly wobbly mouse path does not snap the menu shut
+  const openDropdown = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDropdownOpen(true);
+  };
+  const closeDropdown = (delay = 0) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setDropdownOpen(false), delay);
+  };
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -53,7 +68,7 @@ export default function Header() {
             className="text-2xl md:text-3xl font-bold tracking-wide text-white"
             style={{ fontFamily: "var(--font-playfair)", letterSpacing: "0.08em" }}
           >
-            RS <span className="text-[var(--gold)]">Sagar</span>{" "}
+            RS <span className="text-gold">Sagar</span>{" "}
             <span className="text-sm md:text-base font-normal align-top ml-1 opacity-80">
               &amp; Associates
             </span>
@@ -67,28 +82,44 @@ export default function Header() {
               <div
                 key={link.label}
                 className="relative"
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
+                onMouseEnter={openDropdown}
+                onMouseLeave={() => closeDropdown(200)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) closeDropdown();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") closeDropdown();
+                }}
               >
-                <button className="text-white/80 hover:text-[var(--gold)] font-medium transition-colors text-sm uppercase tracking-wider flex items-center gap-1">
+                <button
+                  type="button"
+                  // Mouse clicks only open (hover already did); keyboard Enter/Space toggles
+                  onClick={(e) => (e.detail === 0 && dropdownOpen ? closeDropdown() : openDropdown())}
+                  aria-expanded={dropdownOpen}
+                  aria-haspopup="true"
+                  className="text-white/80 hover:text-gold font-medium transition-colors text-sm uppercase tracking-wider flex items-center gap-1">
                   {link.label}
                   <svg className={`w-4 h-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {dropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-2xl py-2 border border-gray-100"
-                    style={{ animation: "fadeInDown 0.25s ease-out" }}
-                  >
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-5 py-3 text-gray-700 hover:bg-[var(--cream)] hover:text-[var(--gold)] text-sm font-medium transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                  // pt-2 (not mt-2) keeps the gap under the button inside the hover area
+                  <div className="absolute top-full left-0 pt-2">
+                    <div className="w-52 bg-white rounded-xl shadow-2xl py-2 border border-gray-100"
+                      style={{ animation: "fadeInDown 0.25s ease-out" }}
+                    >
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => closeDropdown()}
+                          className="block px-5 py-3 text-gray-700 hover:bg-cream hover:text-gold-ink text-sm font-medium transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -96,7 +127,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/80 hover:text-[var(--gold)] font-medium transition-colors text-sm uppercase tracking-wider relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[var(--gold)] after:transition-all hover:after:w-full"
+                className="text-white/80 hover:text-gold font-medium transition-colors text-sm uppercase tracking-wider relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gold after:transition-all hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -109,6 +140,7 @@ export default function Header() {
           className={`lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 ${mobileOpen ? "hamburger-open" : ""}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <span className="hamburger-line" />
           <span className="hamburger-line" />
@@ -122,7 +154,7 @@ export default function Header() {
       )}
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu fixed top-0 right-0 h-full w-[280px] bg-[var(--navy-dark)] z-50 lg:hidden flex flex-col pt-20 px-8 ${mobileOpen ? "open" : ""}`}>
+      <div className={`mobile-menu fixed top-0 right-0 h-full w-[280px] bg-navy-dark z-50 lg:hidden flex flex-col pt-20 px-8 ${mobileOpen ? "open" : ""}`}>
         <button
           className="absolute top-6 right-6 text-white/70 hover:text-white"
           onClick={() => setMobileOpen(false)}
@@ -145,7 +177,7 @@ export default function Header() {
                     key={child.href}
                     href={child.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-white/80 hover:text-[var(--gold)] py-2 pl-4 border-l-2 border-white/10 hover:border-[var(--gold)] text-sm transition-colors"
+                    className="block text-white/80 hover:text-gold py-2 pl-4 border-l-2 border-white/10 hover:border-gold text-sm transition-colors"
                   >
                     {child.label}
                   </Link>
@@ -156,7 +188,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-white hover:text-[var(--gold)] py-3 text-lg font-medium transition-colors border-b border-white/5"
+                className="text-white hover:text-gold py-3 text-lg font-medium transition-colors border-b border-white/5"
               >
                 {link.label}
               </Link>

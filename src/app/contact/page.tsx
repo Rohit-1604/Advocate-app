@@ -19,8 +19,18 @@ export default function ContactPage() {
 
   function handleWhatsApp(e: React.FormEvent) {
     e.preventDefault();
-    const text = `Hello Advocate Rajbir Singh Sagar,%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0A%0AMessage:%0A${formData.message}`;
-    window.open(`https://wa.me/919910017625?text=${text}`, '_blank');
+    const text = encodeURIComponent(
+      `Hello Advocate Rajbir Singh Sagar,
+
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}`
+    );
+    window.open(`https://wa.me/919910017625?text=${text}`, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
   }
 
@@ -42,10 +52,10 @@ export default function ContactPage() {
         <div className="absolute inset-0 opacity-10">
           <Image src="/images/court.jpg" alt="" fill className="object-cover" />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[var(--navy-dark)] to-[var(--navy)] opacity-90" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-navy-dark to-navy opacity-90" />
         <div className="relative z-10 text-center px-6">
           <p
-            className="text-[var(--gold-light)] text-sm uppercase tracking-[0.3em] font-medium mb-4"
+            className="text-gold-light text-sm uppercase tracking-[0.3em] font-medium mb-4"
             style={{ animation: 'fadeInDown 0.8s ease-out' }}
           >
             Get In Touch
@@ -61,7 +71,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-20 bg-[var(--cream)]">
+      <section className="py-20 bg-cream">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Contact Details */}
@@ -69,7 +79,7 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2
-                    className="text-2xl font-bold text-[var(--navy)] mb-6"
+                    className="text-2xl font-bold text-navy mb-6"
                     style={{ fontFamily: 'var(--font-playfair)' }}
                   >
                     Get In Touch
@@ -89,14 +99,14 @@ export default function ContactPage() {
                     rel={item.external ? 'noopener noreferrer' : undefined}
                     className="flex items-start gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-[var(--gold)] bg-opacity-10 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--gold)] transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors">
                       <div
-                        className="text-[var(--gold)] group-hover:text-white transition-colors"
+                        className="text-gold-ink group-hover:text-navy-dark transition-colors"
                         dangerouslySetInnerHTML={{ __html: item.icon }}
                       />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider font-medium mb-1">{item.label}</p>
+                      <p className="text-xs text-muted uppercase tracking-wider font-medium mb-1">{item.label}</p>
                       <p className="text-gray-700 font-medium text-sm leading-relaxed">{item.value}</p>
                     </div>
                   </a>
@@ -105,12 +115,12 @@ export default function ContactPage() {
                 {/* Office Hours */}
                 <div className="p-5 bg-white rounded-xl shadow-sm">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-[var(--navy)] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-navy flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Office Hours</p>
+                    <p className="text-xs text-muted uppercase tracking-wider font-medium">Office Hours</p>
                   </div>
                   <div className="space-y-1 text-sm text-gray-600">
                     <p><span className="font-medium text-gray-800">Mon – Sat:</span> 9:00 AM – 6:00 PM</p>
@@ -131,7 +141,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3
-                      className="text-2xl font-bold text-[var(--navy)] mb-3"
+                      className="text-2xl font-bold text-navy mb-3"
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       Thank You!
@@ -149,12 +159,12 @@ export default function ContactPage() {
                 ) : (
                   <>
                     <h3
-                      className="text-2xl font-bold text-[var(--navy)] mb-2"
+                      className="text-2xl font-bold text-navy mb-2"
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       Send Us a Message
                     </h3>
-                    <p className="text-gray-400 text-sm mb-8">
+                    <p className="text-muted text-sm mb-8">
                       Fill in the form below and choose how you&apos;d like to reach us.
                     </p>
 
@@ -171,7 +181,7 @@ export default function ContactPage() {
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--gold)] focus:border-[var(--gold)] outline-none transition-all text-sm"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gold-ink focus:border-gold-ink outline-none transition-all text-sm"
                             placeholder="Your full name"
                           />
                         </div>
@@ -186,7 +196,7 @@ export default function ContactPage() {
                             required
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--gold)] focus:border-[var(--gold)] outline-none transition-all text-sm"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gold-ink focus:border-gold-ink outline-none transition-all text-sm"
                             placeholder="+91 XXXXX XXXXX"
                           />
                         </div>
@@ -203,7 +213,7 @@ export default function ContactPage() {
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--gold)] focus:border-[var(--gold)] outline-none transition-all text-sm"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gold-ink focus:border-gold-ink outline-none transition-all text-sm"
                             placeholder="you@email.com"
                           />
                         </div>
@@ -216,7 +226,7 @@ export default function ContactPage() {
                             name="subject"
                             value={formData.subject}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--gold)] focus:border-[var(--gold)] outline-none transition-all text-sm"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gold-ink focus:border-gold-ink outline-none transition-all text-sm"
                           >
                             <option value="">Select a subject</option>
                             <option value="Criminal Law">Criminal Law</option>
@@ -240,7 +250,7 @@ export default function ContactPage() {
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--gold)] focus:border-[var(--gold)] outline-none transition-all text-sm resize-none"
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gold-ink focus:border-gold-ink outline-none transition-all text-sm resize-none"
                           placeholder="Briefly describe your legal matter..."
                         />
                       </div>
@@ -249,10 +259,7 @@ export default function ContactPage() {
                         <button
                           type="submit"
                           onClick={handleWhatsApp}
-                          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-2 text-sm"
-                          style={{ background: '#25d366' }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = '#1ebe5d')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = '#25d366')}
+                          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-white bg-whatsapp-ink hover:bg-whatsapp-ink/90 transition-all flex items-center justify-center gap-2 text-sm"
                         >
                           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>

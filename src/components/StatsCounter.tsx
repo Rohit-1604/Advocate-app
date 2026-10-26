@@ -76,13 +76,13 @@ export default function StatsCounter() {
       {/* Background */}
       <div className="absolute inset-0 navy-gradient-bg" />
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--gold)] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[var(--gold-light)] rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-light rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-[var(--gold-light)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">
+          <p className="text-gold-light text-sm uppercase tracking-[0.2em] font-semibold mb-3">
             Our Track Record
           </p>
           <h2
@@ -101,7 +101,7 @@ export default function StatsCounter() {
               className="text-center p-6 md:p-8 rounded-2xl glass hover:bg-white/15 transition-all duration-300"
             >
               <div
-                className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[var(--gold)] bg-opacity-20 flex items-center justify-center text-[var(--gold-light)]"
+                className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gold/20 flex items-center justify-center text-gold-light"
                 dangerouslySetInnerHTML={{ __html: stat.icon }}
               />
               <p
@@ -109,7 +109,7 @@ export default function StatsCounter() {
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {counts[i]}
-                <span className="text-[var(--gold)]">{stat.suffix}</span>
+                <span className="text-gold">{stat.suffix}</span>
               </p>
               <p className="text-white/60 text-sm font-medium">{stat.label}</p>
             </div>

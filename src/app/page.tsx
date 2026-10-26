@@ -21,16 +21,16 @@ export default function HomePage() {
           quality={80}
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(13,20,82,0.85)] via-[rgba(26,35,126,0.75)] to-[rgba(13,20,82,0.9)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy/75 to-navy-dark/9" />
 
         {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--gold)] opacity-5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[var(--gold-light)] opacity-5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gold opacity-5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold-light opacity-5 rounded-full blur-3xl" />
 
         {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <p
-            className="text-[var(--gold-light)] text-sm md:text-base uppercase tracking-[0.3em] font-medium mb-6"
+            className="text-gold-light text-sm md:text-base uppercase tracking-[0.3em] font-medium mb-6"
             style={{ animation: 'fadeInDown 0.8s ease-out' }}
           >
             Welcome to
@@ -116,8 +116,8 @@ export default function HomePage() {
             <ScrollReveal direction="left" className="md:w-2/5">
               <div className="relative">
                 {/* Decorative frame */}
-                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-[var(--gold)] rounded-2xl" />
-                <div className="absolute -bottom-4 -right-4 w-full h-full bg-[var(--navy)] opacity-10 rounded-2xl" />
+                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-2xl" />
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-navy opacity-10 rounded-2xl" />
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src="/images/ADV. Rajbir.jpeg"
@@ -128,7 +128,7 @@ export default function HomePage() {
                   />
                 </div>
                 {/* Experience Badge */}
-                <div className="absolute -bottom-6 -right-6 bg-[var(--gold)] text-white rounded-2xl px-6 py-4 shadow-xl">
+                <div className="absolute -bottom-6 -right-6 bg-gold text-navy-dark rounded-2xl px-6 py-4 shadow-xl">
                   <span className="text-3xl font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>Expert</span>
                   <p className="text-sm font-medium">Legal Counsel</p>
                 </div>
@@ -137,11 +137,11 @@ export default function HomePage() {
 
             {/* Content */}
             <ScrollReveal direction="right" className="md:w-3/5">
-              <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">
+              <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">
                 About Us
               </p>
               <h2
-                className="text-3xl md:text-4xl font-bold text-[var(--navy)] mb-6 leading-tight"
+                className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight"
                 style={{ fontFamily: 'var(--font-playfair)' }}
               >
                 Dedicated to Protecting <br className="hidden md:block" />
@@ -169,8 +169,8 @@ export default function HomePage() {
                   { label: 'Happy Clients', value: '1000+' },
                   { label: 'Courts', value: 'All Delhi' },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center p-4 bg-[var(--cream)] rounded-xl">
-                    <p className="text-2xl font-bold text-[var(--gold)]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <div key={stat.label} className="text-center p-4 bg-cream rounded-xl">
+                    <p className="text-2xl font-bold text-gold-ink" style={{ fontFamily: 'var(--font-playfair)' }}>
                       {stat.value}
                     </p>
                     <p className="text-xs text-gray-500 mt-1 font-medium">{stat.label}</p>
@@ -192,14 +192,14 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           PRACTICE AREAS
           ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-[var(--cream)]">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">
+            <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">
               What We Do
             </p>
             <h2
-              className="text-3xl md:text-5xl font-bold text-[var(--navy)] mb-4"
+              className="text-3xl md:text-5xl font-bold text-navy mb-4"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Our Practice Areas
@@ -224,16 +224,16 @@ export default function HomePage() {
                         fill
                         className="card-image object-cover"
                       />
-                      <div className="card-overlay absolute inset-0 bg-gradient-to-t from-[var(--navy-dark)] via-transparent to-transparent opacity-60" />
+                      <div className="card-overlay absolute inset-0 bg-gradient-to-t from-navy-dark via-transparent to-transparent opacity-60" />
                       {/* Icon overlay */}
                       <div className="absolute bottom-4 left-4 bg-white/90 rounded-full p-3 shadow-lg">
-                        <div className="text-[var(--gold)]" dangerouslySetInnerHTML={{ __html: area.icon }} />
+                        <div className="text-gold-ink" dangerouslySetInnerHTML={{ __html: area.icon }} />
                       </div>
                     </div>
                     {/* Content */}
                     <div className="p-6">
                       <h3
-                        className="text-xl font-bold text-[var(--navy)] mb-2 group-hover:text-[var(--gold)] transition-colors"
+                        className="text-xl font-bold text-navy mb-2 group-hover:text-gold-ink transition-colors"
                         style={{ fontFamily: 'var(--font-playfair)' }}
                       >
                         {area.title}
@@ -241,7 +241,7 @@ export default function HomePage() {
                       <p className="text-gray-500 text-sm leading-relaxed mb-4">
                         {area.description}
                       </p>
-                      <span className="text-[var(--gold)] text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                      <span className="text-gold-ink text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
                         Learn More
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -267,11 +267,11 @@ export default function HomePage() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">
+            <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">
               Why Clients Trust Us
             </p>
             <h2
-              className="text-3xl md:text-5xl font-bold text-[var(--navy)] mb-4"
+              className="text-3xl md:text-5xl font-bold text-navy mb-4"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Why Choose Us
@@ -282,15 +282,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChooseUs.map((item, index) => (
               <ScrollReveal key={item.title} delay={(index * 100) as 0 | 100 | 200 | 300 | 400 | 500 | 600}>
-                <div className="text-center p-8 rounded-2xl border border-gray-100 hover:border-[var(--gold)] hover:shadow-xl transition-all duration-300 group h-full">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[var(--cream)] flex items-center justify-center group-hover:bg-[var(--gold)] transition-colors">
+                <div className="text-center p-8 rounded-2xl border border-gray-100 hover:border-gold hover:shadow-xl transition-all duration-300 group h-full">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
                     <div
-                      className="text-[var(--gold)] group-hover:text-white transition-colors"
+                      className="text-gold-ink group-hover:text-navy-dark transition-colors"
                       dangerouslySetInnerHTML={{ __html: item.icon }}
                     />
                   </div>
                   <h3
-                    className="text-lg font-bold text-[var(--navy)] mb-3"
+                    className="text-lg font-bold text-navy mb-3"
                     style={{ fontFamily: 'var(--font-playfair)' }}
                   >
                     {item.title}
@@ -320,11 +320,11 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[var(--navy-dark)] via-[var(--navy)] to-[var(--navy-dark)] opacity-95" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-navy-dark via-navy to-navy-dark opacity-95" />
 
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <ScrollReveal>
-            <p className="text-[var(--gold-light)] text-sm uppercase tracking-[0.2em] font-semibold mb-4">
+            <p className="text-gold-light text-sm uppercase tracking-[0.2em] font-semibold mb-4">
               Get In Touch
             </p>
             <h2

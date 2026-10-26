@@ -29,16 +29,13 @@ export default function CriminalLawPage() {
       {/* Hero */}
       <section className="relative py-32 md:py-44 overflow-hidden">
         <Image src="/images/criminal.jpg" alt="Criminal Law Defense Delhi" fill className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-dark)] via-[rgba(26,35,126,0.85)] to-[var(--navy-dark)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy/85 to-navy-dark" />
         <div className="relative z-10 text-center px-6">
-          <p className="text-[var(--gold-light)] text-sm uppercase tracking-[0.3em] font-medium mb-4" style={{ animation: "fadeInDown 0.8s ease-out" }}>Practice Area</p>
+          <p className="text-gold-light text-sm uppercase tracking-[0.3em] font-medium mb-4" style={{ animation: "fadeInDown 0.8s ease-out" }}>Practice Area</p>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-playfair)", animation: "hero-text 1s ease-out" }}>
             Criminal <span className="gradient-text">Law</span>
           </h1>
           <div className="section-divider mx-auto mb-4" />
-          <p className="text-white/50 text-sm">
-            <Link href="/" className="hover:text-[var(--gold)] transition-colors">Home</Link> / <Link href="/#practice" className="hover:text-[var(--gold)] transition-colors">Practice Areas</Link> / Criminal Law
-          </p>
         </div>
       </section>
 
@@ -47,8 +44,8 @@ export default function CriminalLawPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
             <ScrollReveal direction="left" className="lg:w-3/5">
-              <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">Criminal Defense</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--navy)] mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
+              <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">Criminal Defense</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6" style={{ fontFamily: "var(--font-playfair)" }}>
                 Defending Your Rights with Vigour
               </h2>
               <div className="section-divider mb-8" />
@@ -74,18 +71,18 @@ export default function CriminalLawPage() {
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-[var(--cream)]">
+      <section className="py-20 bg-cream">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">Our Services</p>
-            <h2 className="text-3xl font-bold text-[var(--navy)] mb-4" style={{ fontFamily: "var(--font-playfair)" }}>Criminal Law Services</h2>
+            <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">Our Services</p>
+            <h2 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: "var(--font-playfair)" }}>Criminal Law Services</h2>
             <div className="section-divider mx-auto" />
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={((i % 3) * 100) as 0 | 100 | 200}>
-                <div className="bg-white p-6 rounded-xl border-l-4 border-[var(--gold)] hover:shadow-lg transition-all h-full">
-                  <h3 className="text-lg font-bold text-[var(--navy)] mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{s.title}</h3>
+                <div className="bg-white p-6 rounded-xl border-l-4 border-gold hover:shadow-lg transition-all h-full">
+                  <h3 className="text-lg font-bold text-navy mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{s.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </ScrollReveal>
@@ -98,16 +95,16 @@ export default function CriminalLawPage() {
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">Our Approach</p>
-            <h2 className="text-3xl font-bold text-[var(--navy)] mb-4" style={{ fontFamily: "var(--font-playfair)" }}>How We Handle Your Case</h2>
+            <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">Our Approach</p>
+            <h2 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: "var(--font-playfair)" }}>How We Handle Your Case</h2>
             <div className="section-divider mx-auto" />
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {process.map((p, i) => (
               <ScrollReveal key={p.step} delay={(i * 100) as 0 | 100 | 200 | 300}>
                 <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--navy)] text-white flex items-center justify-center text-xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>{p.step}</div>
-                  <h3 className="text-lg font-bold text-[var(--navy)] mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{p.title}</h3>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-navy text-white flex items-center justify-center text-xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>{p.step}</div>
+                  <h3 className="text-lg font-bold text-navy mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{p.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
                 </div>
               </ScrollReveal>

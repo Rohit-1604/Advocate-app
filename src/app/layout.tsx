@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import BackToTop from '@/components/BackToTop';
+import MobileCallBar from '@/components/MobileCallBar';
 
 // Font setup
 const playfair = Playfair_Display({
@@ -118,12 +119,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[var(--background)] text-[var(--foreground)]">
+      <body className="bg-background text-foreground">
         <Header />
         <main>{children}</main>
         <Footer />
         <WhatsAppButton />
         <BackToTop />
+        <MobileCallBar />
       </body>
     </html>
   );

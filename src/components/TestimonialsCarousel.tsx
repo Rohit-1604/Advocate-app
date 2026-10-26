@@ -67,14 +67,14 @@ export default function TestimonialsCarousel() {
   }, [next]);
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--cream)]">
+    <section className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="text-[var(--gold)] text-sm uppercase tracking-[0.2em] font-semibold mb-3">
+          <p className="text-gold-ink text-sm uppercase tracking-[0.2em] font-semibold mb-3">
             Client Testimonials
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold text-[var(--navy)] mb-4"
+            className="text-3xl md:text-5xl font-bold text-navy mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             What Our Clients Say
@@ -99,7 +99,7 @@ export default function TestimonialsCarousel() {
                 <div className="testimonial-card bg-white rounded-2xl p-8 h-full shadow-md border border-gray-100">
                   {/* Quote Icon */}
                   <svg
-                    className="w-10 h-10 text-[var(--gold)] opacity-30 mb-4"
+                    className="w-10 h-10 text-gold-ink opacity-30 mb-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -127,14 +127,14 @@ export default function TestimonialsCarousel() {
 
                   {/* Author */}
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[var(--navy)] flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white font-bold text-sm">
                       {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-semibold text-[var(--navy)] text-sm">
+                      <p className="font-semibold text-navy text-sm">
                         {t.name}
                       </p>
-                      <p className="text-xs text-[var(--gold)]">{t.caseType}</p>
+                      <p className="text-xs text-gold-ink">{t.caseType}</p>
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function TestimonialsCarousel() {
               onClick={() => setCurrent(i)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 i === current
-                  ? "bg-[var(--gold)] w-8"
+                  ? "bg-gold w-8"
                   : "bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to slide ${i + 1}`}
