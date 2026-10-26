@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://rssagarandassociates.com/sitemap.xml',
+    sitemap: 'https://www.advocaterajbirsagar.com/sitemap.xml',
   };
 }

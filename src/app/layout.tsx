@@ -23,6 +23,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://www.advocaterajbirsagar.com'),
   title: 'Best Lawyer in Delhi | Rajbir Advocate Karkardooma | Criminal & Divorce Lawyer',
   description:
     'Advocate Rajbir Singh Sagar – Best lawyer in Delhi, Karkardooma Court. Expert in criminal law, divorce, family law, and bail matters. Trusted, experienced, and result-oriented legal services.',
@@ -45,7 +46,7 @@ export const metadata = {
     title: 'Best Lawyer in Delhi | RS Sagar and Associates',
     description:
       'Advocate Rajbir Singh Sagar – Expert in criminal law, divorce, family law, and bail matters at Karkardooma Court, Delhi.',
-    url: 'https://rssagarandassociates.com',
+    url: 'https://www.advocaterajbirsagar.com',
     siteName: 'RS Sagar and Associates',
     locale: 'en_IN',
     type: 'website',
@@ -74,7 +75,7 @@ const jsonLd = {
   alternateName: 'RS Sagar and Associates',
   description:
     'Expert lawyer in Delhi specializing in criminal law, divorce, family law, civil disputes, and bail matters at Karkardooma Court.',
-  url: 'https://rssagarandassociates.com',
+  url: 'https://www.advocaterajbirsagar.com',
   telephone: '+91-9910017625',
   email: 'rajbirssagar@gmail.com',
   address: {
